@@ -166,17 +166,30 @@ namespace EditorConfig.VisualStudio
 
         #region Package Members
 
+        protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+        {
+            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this));
+
+            // Switches to the UI thread in order to consume some services used in command initialization
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+            // Query service asynchronously from the UI thread
+            var dte = await GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+
+            RegisterCommands();
+            RegisterShellEventListener();
+        }
+
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
         /// where you can put all the initialization code that rely on services provided by VisualStudio.
         /// </summary>
-        protected override void Initialize()
+        public void Initialize_old()
         {
             Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this));
             base.Initialize();
 
-            RegisterCommands();
-            RegisterShellEventListener();
+
         }
 
         #endregion Package Members
