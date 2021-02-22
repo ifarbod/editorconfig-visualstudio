@@ -32,13 +32,13 @@ namespace EditorConfig.VisualStudio
     /// </summary>
     // This attribute tells the PkgDef creation utility (CreatePkgDef.exe) that this class is
     // a package.
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     // This attribute is used to register the information needed to show this package
     // in the Help/About dialog of Visual Studio.
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400, LanguageIndependentName = "EditorConfig")]
-    [ProvideAutoLoad("adfc4e64-0397-11d1-9f4e-00a0c911004f")]
+    [ProvideAutoLoad(UIContextGuid, PackageAutoLoadFlags.BackgroundLoad)]
     [Guid(Guids.GuidEditorConfigPkgString)]
-    public sealed class EditorConfigPackage : Package
+    public sealed class EditorConfigPackage : AsyncPackage
     {
         #region Fields
 
