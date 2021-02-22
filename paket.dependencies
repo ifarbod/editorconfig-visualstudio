@@ -20,7 +20,7 @@ nuget VSSDK.IDE.9 9.0.4 copy_local: false
 nuget VSSDK.Language 11.0.4 copy_local: false
 nuget VSSDK.Language.11 11.0.4 copy_local: false
 nuget VSSDK.OLE.Interop 7.0.4 copy_local: false
-nuget VSSDK.Shell.11 11.0.4 copy_local: false
+nuget VSSDK.Shell.15 16.7.30329.88 copy_local: false
 nuget VSSDK.Shell.Immutable.10 10.0.4 copy_local: false
 nuget VSSDK.Shell.Immutable.11 11.0.4 copy_local: false
 nuget VSSDK.Shell.Interop 7.0.4 copy_local: false
